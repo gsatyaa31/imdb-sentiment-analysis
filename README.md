@@ -2,6 +2,16 @@
 
 An end-to-end natural language processing project that classifies movie reviews as **positive** or **negative**, built with Python, TensorFlow/Keras, and Microsoft Azure. The trained model is served as a live REST API deployed on Azure App Service.
 
+## Live demo
+
+The trained model served as a live API on Azure, predicting sentiment in real time:
+
+![Live API prediction](screenshots/prediction.png)
+
+Model accuracy computed directly in SQL against the stored predictions:
+
+![Model accuracy](screenshots/accuracy.png)
+
 ## What it does
 
 1. Takes raw IMDB movie reviews and cleans the text
@@ -23,7 +33,7 @@ An end-to-end natural language processing project that classifies movie reviews 
 
 ## Project structure
 
-- `imdb_training.ipynb` — loads data, cleans text, builds & trains the neural network, saves the model
+- `IMDB_sentiment_model.ipynb` — loads data, cleans text, builds & trains the neural network, saves the model
 - `azure_database.ipynb` — connects to Azure SQL, uploads reviews, runs predictions, writes results back, computes accuracy in SQL
 - `app.py` — FastAPI application that serves the model as a `/predict` endpoint
 - `requirements.txt` — Python dependencies
@@ -43,7 +53,7 @@ Place `IMDB Dataset.csv` in the project folder. (The dataset is not included in 
    pip install -r requirements.txt
    ```
 2. Copy `.env.example` to `.env` and fill in your Azure SQL credentials.
-3. Run the notebooks in order: `imdb_training.ipynb`, then `azure_database.ipynb`.
+3. Run the notebooks in order: `IMDB_sentiment_model.ipynb`, then `azure_database.ipynb`.
 4. To serve the model as an API locally:
    ```
    uvicorn app:app --reload
